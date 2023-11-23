@@ -1,0 +1,135 @@
+<app-header2></app-header2>
+
+<div class="search__container">
+ <p class="search__title">
+     Go ahead, hover over search
+ </p>
+
+ <input type="input" id="search" name="search" class="search__input" placeholder="Search for products..." (input)="search($event)">
+</div>
+
+<div class="dropdown">
+          
+  <button class="btn btn-secondary dropdown-toggle" 
+   type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li class="dropdown-item" (click)="filterItem('a-z')">a-z</li>
+    <li class="dropdown-item" (click)="filterItem('z-a')">z-a</li>
+    <li class="dropdown-item" (click)="filterItem('latest-old')">latest-old</li>
+    <li class="dropdown-item" (click)="filterItem('old-latest')">old-latest</li>
+
+  </ul>
+</div>
+
+
+  <br><br>
+
+
+<div class="container">
+ 
+ <br>
+ <br>
+ <div class="row">
+ 
+
+<!--  
+  <label for="firstName" class="text-danger pt-1"></label> -->
+  
+     <div *ngFor="let item of movies |paginate:{itemsPerPage:p1,currentPage:p}" class="col-md-3">
+       <div class="dress-card">
+         <div class="dress-card-head">
+          
+           <img class="dress-card-img-top" src="assets/item_pics/{{item.photos}}" alt="image" height="100%">
+    
+         </div>
+         <div class="dress-card-body">
+           <h4 class="dress-card-title">{{item?.itemName}}</h4>
+           <p class="dress-card-para">{{item?.description}}</p>
+           <p class="dress-card-para"><span class="dress-card-price">{{item?.type}}</span>
+           <div class="row">
+        
+             <div class="col-md-6 card-button" (click)="openPopup(item.itemId)"><div class="card-button-inner bag-button">Add to Bag</div></div>
+             <div class="col-md-6 card-button" (click)="view(item.itemId)"><div class="card-button-inner wish-button">View</div></div>
+           
+            </div>
+         </div>
+       </div>
+     </div>
+  
+   
+   </div>
+ 
+</div>
+<pagination-controls (pageChange)="paginate(p=$event)"></pagination-controls>  
+<app-footer></app-footer>
+
+
+
+<div class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><b>Byuing details</b></h4>
+      </div>
+    <div>
+      <div class="popup">
+      <form [formGroup]="form" (ngSubmit)="onsubmit(form)">
+       
+        <div>
+          <label for="quantity" class="mid">Quantity:</label>
+          <input type="text" formControlName="quantity" id="quantity" value="" tabindex="1" class="form-control"
+          [ngClass]="{'is-invalid':(form.controls['quantity'].touched||form.controls['quantity'].dirty) && form.controls['quantity'].errors}">
+          <div *ngIf="(form.controls['quantity'].touched||form.controls['quantity'].dirty)"
+      class="is-invalid">
+
+      <div class="text-danger" *ngIf="form.controls['quantity'].errors?.['required']">
+          Quantity is required.
+      </div>
+         </div>
+         </div>
+    
+
+<br>
+
+      <div>
+          <label for="address" class="mid">address:</label>
+          <input type="text" formControlName="address" id="address" value="" tabindex="2" class="form-control"
+          [ngClass]="{'is-invalid':(form.controls['address'].touched||form.controls['address'].dirty) && form.controls['address'].errors}">
+          <div *ngIf="(form.controls['address'].touched||form.controls['address'].dirty)"
+      class="is-invalid">
+
+      <div class="text-danger" *ngIf="form.controls['address'].errors?.['required']">
+          Address is required.
+      </div>
+         </div>
+         </div>
+     
+<br>
+      <div class="multi">
+        <label for="supplier" class="mid">Choose the Supplier:</label>
+        <ng-multiselect-dropdown placeholder=""[settings]="dropdownSettings" 
+        [data]="supplierList" formControlName="supplier" tabindex="3" >
+        </ng-multiselect-dropdown>
+        <br>
+        <br>
+        </div>
+         
+<input  type="submit" class="btn btn-primary"  value="Submit">  <br>
+       
+      </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div></div>

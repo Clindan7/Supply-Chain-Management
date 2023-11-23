@@ -1,0 +1,76 @@
+<!-- 
+
+  <div class="container my-5">
+         <div class="card-body text-center">
+      <h4 class="card-title">Profile</h4>
+      <p class="card-text"></p>
+    </div>
+
+
+    <form [formGroup]="form" (ngSubmit)="submitSupplier(form)">
+
+  <fieldset>
+    <div>
+      <label for="name" class="mid"> NAME:</label>
+      <input type="text" formControlName="name" id="name" value=""  tabindex="1" >
+  </div>
+
+  <div>
+    <label for="email" class="mid">EMAIL:</label>
+    <input type="text" formControlName="email" id="email" value=""  tabindex="2" >
+</div>
+
+
+      <div>
+          <label for="location" class="mid">LOCATION:</label>
+          <input type="text" formControlName="location" id="location" value="" tabindex="5" >
+      </div>
+
+      <div>
+          <label for="mobile" class="mid">MOBILE:</label>
+          <input type="text" formControlName="mobile" id="mobile" value="" tabindex="6" >
+      </div>
+
+     
+      <input  type="submit" class="btn btn-primary"  value="Add supplier">
+
+</fieldset>
+
+</form>  -->
+  
+
+
+
+
+<div class="container my-5">
+  <div class="card-body text-center">
+
+<p class="card-text"></p>
+</div>
+
+
+<form [formGroup]="form" (ngSubmit)="submitSupplier(form)">
+        
+  <h1>Register Supplier</h1>
+  
+  <fieldset>
+
+
+  <label for="name" class="mid"> NAME:</label>
+  <input type="text" formControlName="name" id="name" value=""  tabindex="1" >
+
+  <label for="email" class="mid">EMAIL:</label>
+  <input type="text" formControlName="email" id="email" value=""  tabindex="2" >
+    
+  <label for="location" class="mid">LOCATION:</label>
+  <input type="text" formControlName="location" id="location" value="" tabindex="3" >
+
+  <label for="mobile" class="mid">MOBILE:</label>
+  <input type="text" formControlName="mobile" id="mobile" value="" tabindex="4" >
+
+  </fieldset>
+  
+
+  <input  type="submit" class="btn btn-success"  value="Add ">
+  
+</form>

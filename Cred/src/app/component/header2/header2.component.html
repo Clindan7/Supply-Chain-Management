@@ -1,0 +1,112 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>header</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="header.component.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+ 
+<div class="header">
+  <a href="default" class="logo"><i class='fa fa-user'></i></a>
+
+  
+  
+  <div class="header-right">
+<a (click)="logout()"><i class="glyphicon glyphicon-log-out" style="font-size: 24px;"></i></a>
+
+
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+ -->
+
+
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>header</title>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="header2.component.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+<body>
+<!--  
+ <div class="header">
+<a href="default" class="logo"><i class='fa fa-user'></i></a>
+ <div class="header-right">
+<a (click)="logout()"><i class="glyphicon glyphicon-log-out" style="font-size: 24px;"></i></a> -->
+
+ <!-- </div>
+</div>   -->
+
+<nav class="navbar">
+
+  <h1 class="logo"><strong>SupplyChain</strong> Management</h1>
+
+  <ul class="nav-links">
+    <li class="link-dark"><a href="purchaser" style="color: white;">Home </a> </li>
+    <li class="link-dark"><a href="supplierlist3" style="color: white;">Supplier List</a></li>
+    <li class="link-dark"><a href="order-list" style="color: white;">OrderList</a></li>
+    <li class="link-dark"><a href="itemlist-purchaser" style="color: white;">Collections</a>  </li>
+    <li class="link-dark"><a href="chat" style="color: white;">Chat</a>  </li>
+
+    <li class="link-dark"><a href="change-purchaserpassword" style="color: white;">Change Password</a>  </li>
+    <button mat-button class="link-white" (click)="show()" href="purchaser-profile">Profile</button>
+  </ul>
+  <a (click)="logout()"><i class="glyphicon glyphicon-log-out" style="font-size: 24px;"></i></a>
+
+  </nav>
+
+    
+
+<header>
+  <div class="header-content justify-content-center">
+    <h2>Explore The Colorful Dresses</h2>
+    <div class="line"></div>
+    <h1>WONDERFUL GIFT</h1>
+  </div>
+
+</header>
+<!-- 
+<script>
+  
+  const menuBtn=document.querySelector('.menu-btn')
+  const navlinks= document.querySelector('.nav-links')
+
+  menuBtn.addEventListener('click',()=>{
+    navlinks.classList.toggle('mobile-menu')
+  })
+</script> -->
+
+</body>
+</html>
+

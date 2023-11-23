@@ -1,0 +1,38 @@
+
+<div class="container my-5">
+    <div class="card-body text-center">
+ <h4 class="card-title">Profile</h4>
+ <p class="card-text"></p>
+</div>
+
+
+<form [formGroup]="form" (ngSubmit)="submitD(form)">
+
+<fieldset>
+<div>
+ <label for="name" class="mid"> NAME:</label>
+ <input type="text" formControlName="name" id="name" value=""  tabindex="1" >
+</div>
+
+<div>
+<label for="email" class="mid">EMAIL:</label>
+<input type="text" formControlName="email" id="email" value=""  tabindex="2" >
+</div>
+
+ <div>
+     <label for="mobile" class="mid">MOBILE:</label>
+     <input type="text" formControlName="mobile" id="mobile" value="" tabindex="6" >
+ </div>
+
+
+ <div>
+    <label for="route" class="mid">route:</label>
+    <input type="text" formControlName="route" id="route" value="" tabindex="7" >
+</div>
+
+
+ <input  type="submit" class="btn btn-primary"  value="Add deliveryperson">
+
+</fieldset>
+
+</form> 

@@ -1,0 +1,239 @@
+
+
+
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">SCM</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="supplier" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+            
+          </a>
+        </li>
+
+        <li>
+          <a href="supplierlist2">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Supplier list</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="chat-supplier">
+            <i class='bx bx-chat'></i>
+            <span class="links_name">Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="change-supplierpassword">
+            <i class='bx bx-menu-alt-right' ></i>
+            <span class="links_name">Change Password</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href (click)="logout()">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <!-- <i class='bx bx-menu sidebarBtn'></i> -->
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input class="form-control searchbtn" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="Search....">
+   
+        <i class='bx bx-search' ></i>
+      </div>
+  
+      <div class="profile-details">
+     
+        <span class="admin_name"></span>
+        <!-- <i class='' >{{ema}}</i> -->
+        <!-- <a href="supplier-profile">
+          <i class=''>{{ema}}</i> -->
+
+          <span class="admin_name">{{ema}}</span>
+          <button mat-button (click)="show()" class='bx bx-chevron-down' href="supplier-profile"></button>
+        </div>
+    </nav>
+
+
+
+              
+
+
+   <div class="sales-boxes">
+        
+ <div class="recent-sales box">
+              
+                     <br>
+                     <br>   
+                        
+              
+              
+  <div class="sales-details">
+                      
+                     
+  <div class="container my-5">
+   <div class="card-body text-center">
+              <br>
+              
+                           <p class="card-text"></p>
+                         </div>
+                     
+                     
+                         <div class="container" id="main-container">
+                          <div class="row">
+                            <div *ngFor="let supplier of data| filter:searchText" class="col-md-6 col-xl-3">
+                               <div class="card m-b-30">
+                                  <div class="card-body row">
+                              
+                                     <div class="d-flex align-items-center">
+                                      <div class="avatar-md">
+                                        <img class="dress-card-img-top" src="assets/item_pics/{{supplier.photos}}" alt="" height="100%">
+  
+                                        <!-- <div class="avatar-title bg-soft-primary text-primary display-6 m-0 rounded-circle"><i class="bx bxs-user-circle"></i></div> -->
+                                      </div>
+                                          <div class="flex-1 ms-3">
+                                              <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">{{supplier.supplierName}}</a></h5>
+                                              <span class="badge badge-soft-success mb-0">Supplier</span>
+                                          </div>
+                              
+                                     </div>
+                    
+                                   
+                    
+                    
+                                  </div>
+                                  <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="font-size-16 mb-1">
+                                    </i>{{supplier.supplierId}}</li>
+                                     <li class="list-group-item"><i class="mdi mdi-google-maps font-size-15 align-middle pe-2 text-primary">
+                                     </i>{{supplier.location}}</li>
+                                     <li class="list-group-item"><i class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary">
+                                     </i>{{supplier.mobile}}</li>
+                                  </ul>
+
+                                  <div class="card-body">
+                                    <div class="float-right btn-group btn-group-sm">
+                                      
+                                     <button type="button" (click)="navigateToUpdate(supplier.supplierId)"  class="btn btn-primary" data-toggle="modal" data-target="#updateSupplierModal"><i class="fa fa-pencil"></i></button>
+                                     <button type="button" (click)="deleteSupplierDetails(supplier.supplierId)"  class="btn btn-danger" data-toggle="modal" data-target="#deleteSupplierModal"><i class="fa fa-times"></i></button>
+                                     
+                         
+                                                  </div>
+                          
+                                                </div>
+                                             </div>
+                                          </div>
+                                        </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+   </div>
+  </section> 
+                <script>
+                 let sidebar = document.querySelector(".sidebar");
+              let sidebarBtn = document.querySelector(".sidebarBtn");
+              sidebarBtn.onclick = function() {
+                sidebar.classList.toggle("active");
+                if(sidebar.classList.contains("active")){
+                sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+              }else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+              }
+               </script>
+              
+              
+              </body>
+              </html>
+
+
+
+
+              <div class="modal"
+              tabindex="-1"
+              role="dialog"
+              [ngStyle]="{'display':displayStyle}">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <!-- <div class="modal-header">
+                    <h4 class="modal-title">PURCHASING DETAILS</h4>
+                  </div> -->
+                <div>
+                  <div class="popup">
+                    <div class="container my-5">
+                      <div class="card-body text-center">
+                   <h4 class="card-title">UPDATE SUPPLIER </h4>
+                   <p class="card-text"></p>
+                 </div>
+             
+            
+                    <div class="pop">
+                  <form [formGroup]="updateForm" (ngSubmit)="updateSupplier(updateForm)" >
+      
+                   <div>
+                       <label for="supplierName" class="mid">SUPPLIER NAME:</label><br>
+                       <input type="text" formControlName="supplierName" id="supplierName" value="" tabindex="1" >
+                   </div>
+             <br>
+                   <div>
+                       <label for="location" class="mid">LOCATION:</label><br>
+                       <input type="text" formControlName="location" id="location" value="" tabindex="2" >
+                   </div>
+             <br>
+                   <div>
+                       <label for="mobile" class="mid">MOBILE:</label><br>
+                       <input type="text" formControlName="mobile" id="mobile" value="" tabindex="3" >
+                   </div>
+                   <br>
+                   <div class="flex-container">
+                   <input  type="submit" class="btn btn-primary"   value="Update">  
+        
+                   
+                    <button type="button" class="btn btn-danger"
+                            (click)="closePopup()">
+                      Close
+                    </button>
+                  </div>
+             </form> 
+            </div> 
+
+                </div>
+              </div>
+            </div>
+            
+            
+            </div>
+              </div>
+              </div>
+              
+
+

@@ -1,0 +1,28 @@
+
+      <div class="container my-5">
+        <div class="card-body text-center">
+     <h4 class="card-title">UPLOAD IMAGE</h4>
+     <p class="card-text"></p>
+   </div>
+
+
+
+ <fieldset>
+             <h4 class="card-title">UPLOAD IMAGE</h4>
+             <br>
+          
+      <div>
+        <td><input type="file" (change)="selectFile($event)"></td>
+     </div>
+
+     <div>    
+        <button [disabled]="!selectedFiles" (click)="upload() ">Upload</button>
+     </div>
+</fieldset>
+
+     
+     
+     
+     
+     
+  

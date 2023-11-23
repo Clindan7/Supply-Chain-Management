@@ -1,0 +1,407 @@
+<!-- 
+
+<nav>
+    <ul>
+        <li class="logo"><img src="https://i.imgur.com/E26Pj54.png"></li>
+        <li><a href="admin"><i class="fa fa-home"></i>&nbsp;  Home</a></li>
+
+        <li><a href="supplierlist"><i class="fa fa-users"></i>&nbsp;  Supplier List</a></li>
+        <li><a href="items"><i class="fa fa-picture-o"></i>&nbsp;  Add Item </a></li>
+
+    
+    
+    </ul>
+</nav>
+
+  <app-header></app-header>
+
+  <body> 
+    <div class="searching">
+    <input type="input" id="search" name="search" placeholder="Search for products..." (input)="search($event)">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+       Filter
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li class="dropdown-item" (click)="filterItem('a-z')">a-z</li>
+        <li class="dropdown-item" (click)="filterItem('z-a')">z-a</li>
+        <li class="dropdown-item" (click)="filterItem('latest-old')">latest-old</li>
+        <li class="dropdown-item" (click)="filterItem('old-latest')">old-latest</li>
+   
+      </ul>
+    </div>
+    </div>
+
+    <table id="customers">
+
+   
+
+<thead>
+
+       <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Type </th>
+        <th scope="col">CreatedDate</th>
+        <th scope="col">Actions1</th>
+        <th scope="col">Actions2</th>
+       
+            </tr>
+</thead>
+            <tr *ngFor="let item of itemlist |paginate:{itemsPerPage:p1,currentPage:p}; let i = index; ">
+              <td>{{item.itemId}}</td>
+              <td>{{item.itemName}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.type}}</td>
+              <td>{{item.createDate}}</td>
+            <td>  <a class="btn btn-sm btn-danger" 
+               (click)="updateItem(item.itemId)"><i
+                class="fa fa-pencil"></i></a> </td>   
+              <td><a class="btn btn-sm btn-primary" 
+              (click)="deleteItem(item.itemId)"><i 
+              class="fa fa-times"></i></a></td>
+
+    </tr>
+ 
+    
+    <pagination-controls (pageChange)="paginate(p=$event)"></pagination-controls> 
+  </table>
+
+  
+    
+  <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <div *ngIf="currentFile" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ progress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progress + '%' }">
+        {{ progress }}%
+      </div>
+
+    </div>
+    <div style="margin-left: 200px; float:right; font-size: larger;">
+    
+    <label class="btn btn-default">
+      <input type="file" (change)="selectFile($event)"/>
+    </label>
+    
+    <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+      Upload
+    </button>
+    
+    <div class="alert alert-dark" role="alert">{{ message }}</div>
+  </div>
+<div class="download">
+  <td><button class="btn btn-secondary" (click)="showCsv()">Download Csv</button></td>
+</div>
+</body>  -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="admin.component.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">SCM</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="admin" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="items">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Add Item</span>
+          </a>
+        </li>
+        <li>
+          <a href="supplierlist">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Supplier list</span>
+          </a>
+        </li>
+        <li>
+          <a href="change-password">
+            <i class='bx bx-menu-alt-right' ></i>
+            <span class="links_name">Change Password</span>
+          </a>
+        </li>
+
+        <li class="log_out">
+          <a href (click)="logout()">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <!-- <i class='bx bx-menu sidebarBtn'></i> -->
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input type="input" id="search" name="search" placeholder="Search for products..." (input)="search($event)">
+
+   
+        <i class='bx bx-search' ></i>
+      </div>
+  
+      <div class="profile-details">
+     
+        <span class="admin_name"></span>
+        <!-- <i class='' >{{ema}}</i> -->
+        <!-- <a href="supplier-profile">
+          <i class=''>{{ema}}</i> -->
+
+          <span class="admin_name">{{ema}}</span>
+          <button mat-button (click)="show()" class='bx bx-chevron-down' href="supplier-profile"></button>
+        </div>
+      
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Item List</div>
+            <div class="number">{{data.length}}</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bx-cart-alt cart'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Supplier List</div>
+            <div class="number">{{dataz.length}}</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-add cart two' ></i>
+        </div>
+<!--         
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Order</div>
+            <div class="number">10</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bx-cart cart three' ></i>
+        </div> -->
+      
+      </div>
+
+
+
+
+
+      
+      <div class="sales-boxes">
+        
+        <div class="recent-sales box">
+
+          
+          <div class="title" ><strong>ITEMS</strong> </div>
+          
+
+          <div class="dropdown">
+          
+            <button class="btn btn-secondary dropdown-toggle" 
+             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li class="dropdown-item" (click)="filterItem('a-z')">a-z</li>
+              <li class="dropdown-item" (click)="filterItem('z-a')">z-a</li>
+              <li class="dropdown-item" (click)="filterItem('latest-old')">latest-old</li>
+              <li class="dropdown-item" (click)="filterItem('old-latest')">old-latest</li>
+         
+            </ul>
+          </div>
+
+          <div class="sales-details">
+            <table id="customers">
+            <ul class="details">
+       <thead class="heading">
+              <tr>
+                <th scope="col" style="width: 30px;">ID</th>
+                <th scope="col" style="width: 100px;">Name</th>&nbsp;
+                <th scope="col" style="width: 400px;">Description</th>
+                <th scope="col" style="width: 120px;">Type </th>
+         
+                <th scope="col"  style="width: 140px;">Actions</th>
+                <th scope="col"  style="width: 140px;">Actions</th>
+               
+                    </tr>
+       </thead>
+            
+            <ul class="details">
+              <tr *ngFor="let item of itemlist |paginate:{itemsPerPage:p1,currentPage:p}; let i = index; ">
+                <td>{{item.itemId}}</td>
+                <td>{{item.itemName}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.type}}</td>
+               
+               <!-- <td> <a class="btn btn-outline-primary"  (click)="updateItem(item.itemId)">Update</a>    </td> -->
+                <td><a class="btn btn-outline-success" (click)="openPopup(item.itemId)">Update</a></td>
+              
+                <td><a class="btn btn-outline-danger" (click)="deleteItem(item.itemId)">Delete</a>
+                </td>
+      </tr>
+      </ul>
+   
+      <pagination-controls (pageChange)="paginate(p=$event)"></pagination-controls> 
+            </ul>
+            </table>
+
+  
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="flex-container">
+    <td><button class="btn btn-secondary" (click)="showItemCsv()">Download Csv</button></td>
+    <br>
+    <div style="margin-left: 200px; float:right; font-size: larger;">
+  
+      <label class="btn btn-default">
+        <input type="file" (change)="selectFile($event)"/>
+      </label>
+      
+      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+        Upload
+      </button>
+      
+      <div class="alert alert-dark" role="alert">{{ message }}</div>
+    </div>  
+  
+  </div>
+
+
+
+
+  
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+
+<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+<div *ngIf="currentFile" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }">
+      {{ progress }}%
+    </div>
+
+  </div>
+  <!-- <div style="margin-left: 200px; float:right; font-size: larger;">
+  
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)"/>
+  </label>
+  
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+    Upload
+  </button>
+  
+  <div class="alert alert-dark" role="alert">{{ message }}</div>
+</div> -->
+
+</html>
+
+
+
+
+
+<div class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ITEM UPDATE</h4>
+      </div>
+    <div>
+
+      <div class="popup">
+        <form [formGroup]="updateform" (ngSubmit)="itemupdate(updateform)">
+              <div>
+                  <label for="itemName" class="mid">ITEM NAME:</label><br>
+                  <input type="text" formControlName="itemName" id="itemName"  tabindex="1" >
+              </div>
+        <br>
+              <div>
+                  <label for="description" class="mid">DESCRIPTION:</label><br>
+                  <input type="text" formControlName="description" id="description"  tabindex="2" >
+              </div>
+       <br>
+
+              <div>
+                  <label for="type" class="mid">TYPE:</label><br>
+                  <input type="text" formControlName="type" id="type"  tabindex="3" >
+              </div>
+
+       <br><br>
+
+              <div class="flex-container4">
+          <input  type="submit" class="btn btn-primary"   value="Update">  
+   
+            <button type="button" class="btn btn-danger"
+                    (click)="closePopup()">
+              Close
+            </button>
+          </div>
+        </form> 
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+</div>

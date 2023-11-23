@@ -1,0 +1,243 @@
+
+
+
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+
+
+
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="chat-supplier.component.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">SCM</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="supplier" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+    
+        <li>
+          <a href="supplierlist2">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Supplier list</span>
+          </a>
+        </li>
+        <li>
+            <a href="chat-supplier">
+              <i class='bx bx-chat' ></i>
+              <span class="links_name"> Chat</span>
+            </a>
+          </li>
+        <li>
+          <a href="change-supplierpassword">
+            <i class='bx bx-menu-alt-right' ></i>
+            <span class="links_name">Change Password</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href (click)="logout()">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <!-- <i class='bx bx-menu sidebarBtn'></i> -->
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <!-- <div class="search-box">
+        <input type="input" id="search" name="search" placeholder="Search for products..." (input)="search($event)">
+
+   
+        <i class='bx bx-search' ></i>
+      </div> -->
+  
+      <div class="profile-details">
+     
+        <span class="admin_name"></span>
+        <!-- <i class='' >{{ema}}</i> -->
+        <!-- <a href="supplier-profile">
+          <i class=''>{{ema}}</i> -->
+
+          <span class="admin_name">{{ema}}</span>
+          <button mat-button (click)="show()" class='bx bx-chevron-down' href="supplier-profile"></button>
+        </div>
+      
+    </nav>
+
+
+
+
+
+<!-- 
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card chat-app">
+                <div id="plist" class="people-list">
+                    <div class="input-group">
+                      
+                    </div>
+                    <ul class="list-unstyled chat-list mt-2 mb-0">
+                        <li class="clearfix " *ngFor="let user of users">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar" *ngIf="this.user.userId!=senderId">
+                            <div class="about">
+                                <div class="name" *ngIf="this.user.userId!=senderId" (click)="call(user)">{{user.name}}</div>
+                                <div class="status" *ngIf="this.user.userId!=senderId"> <i class="fa fa-circle online"></i> left 1 mins ago </div>
+                            </div>
+                        </li>
+                                                    
+                    </ul>
+                   
+                </div>
+                
+                <div class="chat">
+                    <div class="chat-header clearfix">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                </a>
+                                <div class="chat-about">
+                                    <h3 class="m-b-0">{{name1}}</h3>
+                                    <small>Last seen recently</small>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="chat-history">
+                        <ul class="m-b-0">
+                            <li class="clearfix" *ngFor="let chat of data1">
+                                <div class="message-data text-right">
+                                    <img src = "https://bootdey.com/img/Content/avatar/avatar7.png" alt = "avatar">
+                                    <span class="message-data-time">{{chat.createDate | date : 'EEEE, MMMM d, HH:mm'}}</span>
+                                    
+                                </div>
+                                <div class="message my-message" *ngIf="user.userId==chat.senderId">{{chat.message}}.
+                                </div>
+                              
+                                <div class="message other-message float-right" *ngIf="user.userId!=chat.senderId">
+                                    {{chat.message}} </div>
+                            </li>
+                      
+                        </ul>
+                    </div>
+
+                    <div class="chat-message clearfix">
+                        <div class="input-group mb-0">
+                            <form [formGroup]="chatForm">
+                                <div class="input-group-prepend">
+                                    
+                                </div>
+                                <input type="text" class="form-control" (keydown.enter)="chatmsg()" formControlName="message" placeholder="Enter text here...">
+                                <input type="hidden" class="form-control" formControlName="senderId" value="{{senderId}}">
+                                <span class="input-group-text" (click)="chatmsg()"><i class="fa fa-send"></i></span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br> -->
+
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card chat-app">
+            <div id="plist" class="people-list">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <input class="form-control searchbtn" type="text" placeholder="Search..." name="search" [(ngModel)]="searchText" autocomplete="off">
+
+                    </div>
+                </div>
+                <ul class="list-unstyled chat-list mt-2 mb-0">
+                    <li class="clearfix " *ngFor="let user of users|filter:searchText">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar">
+                        <div class="about">
+                            <div class="name" *ngIf="this.user.userId!=senderId" (click)="call(user)">{{user.name}}</div>
+                            <div class="status" *ngIf="this.user.userId!=senderId"> <i class="fa fa-circle online"></i> left 1 mins ago </div>
+                        </div>
+                    </li>
+       
+                </ul>
+            </div>
+            <div class="chat">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                            </a>
+                            <div class="chat-about">
+                                <h6 class="m-b-0">{{name1}}</h6>
+                                <small>Last seen: Recently</small>
+                            </div>
+                        </div>
+               
+                    </div>
+                </div>
+                <div class="chat-history">
+                    <ul class="m-b-0">
+                        <li class="clearfix" *ngFor="let chat of data1">
+                            <div class="message-data text-right">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                                <span class="message-data-time">{{chat.createDate | date : 'EEEE, MMMM d, HH:mm'}}</span>
+
+                            </div>
+                            <div class="message my-message" *ngIf="user.userId==chat.senderId">{{chat.message}}.
+                            </div>
+                          
+                            <div class="message other-message float-right" *ngIf="user.userId!=chat.senderId">
+                                {{chat.message}} </div>            
+                                        </li>
+                    </ul>
+                </div>
+                <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                            <form [formGroup]="chatForm">
+                                <div class="input-group-prepend">
+                                    
+                                <input type="text" class="form-control" (keydown.enter)="chatmsg()" formControlName="message" placeholder="Enter text here...">
+                                <input type="hidden" class="form-control" formControlName="senderId" value="{{senderId}}">
+                                <span class="input-group-text" (click)="chatmsg()"><i class="fa fa-send"></i></span>
+                                </div>
+                            </form>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+
+
+<app-header2></app-header2>
+
+  
+<br>
+
+<br>
+
+<br>
+
+<body>
+
+  <div class="search-box">
+    <!-- <input class="form-control searchbtn" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+    placeholder="Search...."> -->
+    <input type="input" id="search" name="search" class="search__input" placeholder="Search for products..." [(ngModel)]="searchText" autocomplete="off">
+
+    <i class='bx bx-search' ></i>
+   </div>
+   
+<div id="wrapper">
+ <h1>ORDER LIST</h1>
+ 
+ <table id="keywords" cellspacing="0" cellpadding="0">
+   <thead>
+     <tr>
+
+      <th scope="col">id</th>
+              <th scope="col">item</th>
+              <th scope="col">price</th>
+              <th scope="col">address</th>
+              <th scope="col">quantity</th>
+              <th scope="col">dDate</th>
+  
+      
+     </tr>
+   </thead>
+   <tbody>
+    <tr *ngFor="let postorder of data|filter:searchText">
+      <td>{{postorder.preorder.preOrderId}}</td>
+      <td>{{postorder.preorder.item.itemName}}</td>
+      <td>{{postorder.price}}</td>
+      <td>{{postorder.preorder.address}}</td>
+      <td>{{postorder.preorder.quantity}}</td>
+      <td>{{postorder.preorder.dDate|date:'dd-MM-yyyy'}}</td>
+      
+      </tr>
+
+
+
+
+   </tbody>
+ </table>
+ <td><button class="btn btn-success" (click)="showCsv()">Download Csv</button></td>
+
+ </div>
+
+</body>
+
+<app-footer></app-footer>

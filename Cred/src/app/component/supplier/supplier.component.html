@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+  
+    <link rel="stylesheet" href="supplier.component.css">
+ 
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">SCM</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="supplier" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="supplierlist2">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Supplier list</span>
+          </a>
+        </li>
+
+   
+
+        <li>
+          <a href="chat-supplier">
+            <i class='bx bx-chat'></i>
+            <span class="links_name">Chat</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="change-supplierpassword">
+            <i class='bx bx-menu-alt-right' ></i>
+            <span class="links_name">Change Password</span>
+          </a>
+        </li>
+  
+        <li class="log_out">
+          <a href (click)="logout()">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <!-- <i class='bx bx-menu sidebarBtn'></i> -->
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <!-- <input type="text" placeholder="Search..."> -->
+        <input class="form-control searchbtn" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="Search....">
+        <i class='bx bx-search' ></i>
+      </div>
+
+   
+  
+
+      <div class="profile-details">
+     
+        <span class="admin_name"></span>
+          <span class="admin_name">{{ema}}</span>
+          <button mat-button (click)="show()" class='bx bx-chevron-down' href="supplier-profile"></button>
+       
+    
+        
+        </div>
+      
+   
+    </nav>
+   
+    <div class="home-content">
+
+      <div class="calender">
+        <button mat-button (click)="showCalender()" class='fa fa-calendar' href="supplier-profile">Calender</button>
+        </div>
+        
+        <br>
+      <div class="overview-boxes">
+
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Supplier List</div>
+            <div class="number">{{preorderdata.length}}</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up Till Now</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-add cart two' ></i>
+        </div>
+
+  
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">PostorderList</div>
+            <div class="number">{{postorderdata.length}}</div>
+            
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up Till Now</span>
+            </div>
+          </div>
+          <i class='bx bx-cart cart four' ></i>
+        </div>
+        
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">PreOrder List</div>
+            <div class="number">{{preorderdata.length}}</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up Till Now</span>
+            </div>
+          </div>
+          <i class='bx bx-cart cart three' ></i>
+        </div>
+
+
+      
+      </div>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+      
+          <div class="title">Postorder(pre) List</div>
+          <div class="sales-details">
+           <table>
+              <tr class="supplier-table-first">
+                     <th scope="col">Id</th>
+                     <th scope="col">Item</th>
+                     <th scope="col">Address</th>
+                     <th scope="col">Quantity</th>
+                     <th scope="col">Date</th>
+                     <th scope="col">Choice1</th>
+                     <th scope="col">Choice2</th>
+                     <th scope="col">Choice3</th>
+            
+                   </tr>
+               
+                   <tr *ngFor="let postorder of postorderdata | filter:searchText|paginate:{itemsPerPage:p1,currentPage:p} ">
+                       <td>{{postorder.preorder.preOrderId}}</td>
+                       <td>{{postorder.preorder.item.itemName}}</td>
+                       <td>{{postorder.preorder.address}}</td>
+                       <td>{{postorder.preorder.quantity}}</td>
+                       <td>{{postorder.preorder.dDate|date:'dd-MM-yyyy'}}</td>
+                     
+                       <td><button class="btn btn-warning" (click)="view(postorder.postOrderId)"
+                         >View</button></td>
+
+                <td><button class="btn btn-success"   (click)="accept(postorder.postOrderId)"  
+                  >Accept</button></td>
+
+                  <td><button class="btn btn-secondary"   (click)="invoice(postorder.postOrderId)"  
+                    >Invoice</button></td>
+              
+<!-- 
+                  <td><button class="btn btn-success" [disabled]="buttonDisabled" 
+                    (click)="view(postorder.postOrderId)">SHIPPED </button></td>
+                <td><button class="btn btn-danger" 
+                   [disabled]="!buttonDisabled" (click)="viewNo(postorder.postOrderId)">DELIVERED</button></td> -->
+
+
+
+                
+            </tr>
+          </table>
+            <pagination-controls (pageChange)="paginate(p=$event)"></pagination-controls>   
+            
+            
+              <td><button style="float: right;"  class="btn btn-secondary" (click)="showCsvPreorder()">Download Csv</button></td>
+            
+      
+
+          </div>
+         
+
+     
+        </div>
+
+        <div class="sales box">
+          <div class="recent-sales box">
+          <div class="title">Preorder List</div>
+          <div class="sales-details">
+            <table>
+            <tr class="suppliertable">
+                   <th scope="col">Id</th>
+                   <th scope="col">Item</th>
+                   <th scope="col">Quantity</th>
+              
+                   <th scope="col">Choice1</th>
+                   <th scope="col">Choice2</th>
+                 </tr>
+             
+                 <tr *ngFor="let preorder of Paginatedata| filter:searchText ">
+                     <td>{{preorder.preOrderId}}</td>
+                     <td>{{preorder.item.itemName}}</td>
+                     <td>{{preorder.quantity}}</td>
+             <td><button class="btn btn-success"  (click)="acceptPreorderRequest(preorder.preOrderId)">Accept</button></td>
+
+ 
+             <td><button class="btn btn-danger"  (click)="rejectRequest(preorder.preOrderId)">Reject</button></td> 
+           
+          
+         </tr>
+  
+        </table>
+         <mat-paginator [length]=len [pageIndex]=q [pageSize]=q1 aria-label="Select page"  (page)="handlePageEvent($event)">
+        </mat-paginator>     
+        
+        </div>
+     
+         
+      </div>
+      
+    </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+
+
+</html> 
+
+
+
+ <div class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle2}">
+  <div class="modal-dialog" role="document">
+    <br>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Prerequest</h4>
+      </div>
+    <div>
+
+      <div class="popup2">
+        <form  [formGroup]="requestform" (ngSubmit)="requestOrderForm(requestform)" >
+  <table class="table">       
+            <tbody>
+
+       
+              <tr>
+                <label for="itemName" class="mid"> P NAME</label>
+                <input type="text" formControlName="itemName" id="itemName" 
+                value=""  tabindex="1" >
+              </tr>
+              <tr>
+            
+                <label for="quantity" class="mid">QUANTITY</label>
+                <input type="text" formControlName="quantity" 
+                id="quantity" value=""  tabindex="2" >
+                
+             
+              </tr>
+
+            
+              <tr>
+           <label for="price" class="mid">PRICE</label>
+            <input type="text" formControlName="price" id="price" value=""
+              tabindex="3" >
+              </tr>
+
+
+             
+              <tr>
+             
+                <label for="address" class="mid">ADDRESS</label>
+                <input type="text" formControlName="address" id="address"
+                 value="" tabindex="4" >
+              </tr>
+
+
+
+              <tr>
+              <label for="supplierName" class="mid">S NAME</label>
+              <input type="text" formControlName="supplier" id="supplierName" 
+              value="" tabindex="5" >
+              
+      
+              </tr>
+
+
+              <tr>
+              <label for="dDate" class="mid">DDATE</label>
+              <input type="date" formControlName="dDate" id="dDate" value=""
+              tabindex="6" >
+              </tr>
+              <br>
+              <tr>
+
+<label for="deliveryPerson">CHOOSE DPERSON </label>
+<select class="dropbtn" type="text" id="dPersonId" formControlName="deliveryPerson"
+  name="select">
+  <option  *ngFor="let deliveryPerson of deliveryList"
+   value="{{deliveryPerson.dPersonId}}">
+      {{deliveryPerson.dPersonName}}     {{deliveryPerson.dPersonId}}   
+      
+  </option>
+</select>
+</tr>
+<br>
+<br><br>
+<div class="flex-container">
+
+  <div>
+<button type="submit" class="login--form__button btn btn-secondary" value="submit">SEND</button>  
+</div>
+
+<div>
+  <button type="button" class="btn btn-danger"
+          (click)="closePopup2()">
+    Close
+  </button>
+
+</div>
+
+</div>
+            </tbody>
+          </table>
+
+        </form>
+  
+      </div>
+
+    
+    </div>
+  </div>
+</div>
+
+
+</div>    
+
+
+<div class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <br><br>
+  <div class="modal-dialog" role="document">
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">PostRequest</h4>
+      </div>
+    <div>
+
+      <div class="popup1">
+       
+        <form [formGroup]="form" (ngSubmit)="acceptPreorder(form)">
+<!-- <div class="grid-container">
+           -->  <table class="table">       
+            <tbody>
+            <tr>
+                  <label for="preOrderId" class="mid">preOrderId:</label>
+                  <input type="text" class="midclass" formControlName="preOrderId" id="preOrderId"  tabindex="1" readonly>
+                </tr>
+<tr>
+        
+                  <label for="itemId" class="mid1">item ID:</label>
+                  <input type="text" formControlName="itemId" id="itemId" value="" tabindex="2" readonly>
+                </tr>
+            
+              <tr>
+                  <label for="quantity" class="mid2">quantity:</label>
+                  <input type="text" formControlName="quantity" id="quantity" value="" tabindex="3" readonly>
+                </tr>
+       
+             <tr>
+                  <label for="address" class="mid3">address:</label>
+                  <input type="text" formControlName="address" id="address" value="" tabindex="4" readonly>
+              
+                </tr>
+              <tr>
+                  <label for="price" class="mid4">price:</label>
+                  <input type="text" formControlName="price" id="price" value="" tabindex="5" required 
+                  [(ngModel)]="acceptDetails.price" pattern="[0-9]"  >
+                  <span class="text-danger" *ngIf="!form.controls['price'].dirty && form.hasError('required','price')"><i> <br> price is required</i></span>
+                  <span class="text-danger" *ngIf="form.controls['price'].dirty && !form.hasError('pattern','price')"><i>Pattern not match<br></i></span>
+                </tr>
+    
+
+                  
+             <div class="flex-container2"> 
+              <div>
+                <input  type="submit" class="btn btn-primary mid5"   value="Submit">  
+        </div>
+        <div>
+          <button type="button" class="btn btn-danger"
+                  (click)="closePopup()">
+            Close
+          </button>
+        </div>
+</div>
+<!-- </div> -->
+            </tbody>
+            </table>
+        </form> 
+      
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- 
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div  class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          
+        <form  [formGroup]="requestform" (ngSubmit)="requestOrderForm(requestform)" >
+
+          <table class="table">       
+                    <tbody>
+        
+               
+                      <tr>
+                        <label for="itemName" class="mid"> P NAME</label>
+                        <input type="text" formControlName="itemName" id="itemName" 
+                        value=""  tabindex="1" >
+                      </tr>
+                      <tr>
+                    
+                        <label for="quantity" class="mid">QUANTITY</label>
+                        <input type="text" formControlName="quantity" 
+                        id="quantity" value=""  tabindex="2" >
+                        
+                     
+                      </tr>
+        
+                    
+                      <tr>
+                   <label for="price" class="mid">PRICE</label>
+                    <input type="text" formControlName="price" id="price" value=""
+                      tabindex="3" >
+                      </tr>
+        
+        
+                     
+                      <tr>
+                     
+                        <label for="address" class="mid">ADDRESS</label>
+                        <input type="text" formControlName="address" id="address"
+                         value="" tabindex="4" >
+                      </tr>
+        
+        
+        
+                      <tr>
+                      <label for="supplierName" class="mid">S NAME</label>
+                      <input type="text" formControlName="supplier" id="supplierName" 
+                      value="" tabindex="5" >
+                      
+              
+                      </tr>
+        
+        
+                      <tr>
+                      <label for="dDate" class="mid">DDATE</label>
+                      <input type="date" formControlName="dDate" id="dDate" value=""
+                      tabindex="6" >
+                      </tr>
+                      <br>
+                      <tr>
+        
+        <label for="deliveryPerson">CHOOSE DPERSON </label>
+        <select class="dropbtn" type="text" id="dPersonId" formControlName="deliveryPerson"
+          name="select">
+          <option  *ngFor="let deliveryPerson of deliveryList"
+           value="{{deliveryPerson.dPersonId}}">
+              {{deliveryPerson.dPersonName}}     {{deliveryPerson.dPersonId}}   
+              
+          </option>
+        </select>
+        </tr>
+        <br>
+        <br><br>
+        
+          <div>
+        <button type="submit" class="login--form__button btn btn-secondary" value="submit">SEND</button>  
+        </div>
+       
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit"  class="btn btn-primary" 
+          data-bs-dismiss="modal">Add</button>
+       
+      </div> -->

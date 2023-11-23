@@ -1,0 +1,324 @@
+
+    @import url(https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700);
+
+    body {
+      background-color: #efefef;
+      color: white;
+      font-size: 100%;
+      font-family: 'PT Sans Caption', sans-serif;
+      font-weight: 400;
+    }
+    
+    form {
+      border-top: 5px solid #01caa7;
+      width: 552px;
+      margin: 40px auto;
+    }
+    
+    fieldset {
+      margin: auto;
+      width: 470px;
+      height: auto;
+      border: 1px solid #e5e5e5;
+      border-top: 0px solid #e5e5e5;
+      background: #fdfdfd;
+      padding: 40px;
+    }
+    
+    form div {
+      padding: 0 0 40px 0;
+    }
+    
+    form label {
+      float: left;
+      width: 200px;
+      font-size: 1em;
+      color: #111;
+    }
+    
+    form label.mid {
+      line-height: 40px;
+    }
+    
+    form input, form select {
+     background: #01caa7;
+      border: 2px solid #fff;
+      color: #fff;
+      font-family: 'PT Sans Caption', sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      height: 40px;
+      margin: 0;
+      padding: 0 10px;
+      width: 240px;
+     vertical-align: middle;
+    }
+    
+    form input:hover, form select:hover, form textarea:hover {
+      border: 2px solid #2b7b5c;
+    }
+    
+    form input:focus, form select:focus, form textarea:focus {
+      border-color: #2b7b5c;
+      outline: none;
+    }
+    
+    form select {
+      float: left;
+      margin-bottom: 40px;
+      appearance: none;
+      width: 260px;
+      border-radius: 0;
+    }
+    
+    form input.checkbox, form input.radio {
+      margin: 0;
+      padding: 2px 0;
+      width: auto;
+      height: auto;
+    }
+    
+    form input.button {
+      width: 270px;
+      height: 40px;
+      border: 0px solid #fff;
+    }
+    
+    form textarea {
+      width: 240px;
+      height: 200px;
+      padding: 10px;
+      background: #01caa7;
+       border: 2px solid #fff;
+       color: #fff;
+    }
+    
+    form input.submit { 
+      float: left;
+      margin-left: 200px;
+      width: 100px;
+      height: 40px;
+      color: #fff;
+    }
+    
+    form input.submit:hover { 
+     background: #1d9676;
+      background: -webkit-linear-gradient(#1d9676, #01caa7);  
+      background: -moz-linear-gradient(#1d9676, #01caa7); 
+      background: -o-linear-gradient(#1d9676, #01caa7); 
+      background: -ms-linear-gradient(#1d9676, #01caa7);  
+      background: linear-gradient(#1d9676, #01caa7);  
+    }
+
+    .card-title{
+     color: black;
+     font-size: xx-large;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-style: oblique;
+     font-weight: bold;
+   }
+
+   body{
+    margin:0;
+    padding:0;
+    font-family:'montserrat';
+    background:#e3e9f7;
+}
+
+.logo{
+    padding:20px;
+}
+
+nav ul{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:260px;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#2b2626;
+}
+
+nav ul li{
+    list-style:none;
+}
+
+
+nav ul li a{
+    display:block;
+    font-family:'montserrat';
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:17px;
+    color:#fff;
+    position:relative;
+    padding:15px 0px 15px 25px;
+    transition:all 0.5s;
+}
+
+nav ul li a:before{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    background:#e3e9f7;
+    border-radius:40px 0 0 40px;
+    z-index:-1;
+    transition:all 1s;
+}
+
+nav ul li a:hover{
+    color:#2b2626;
+}
+
+nav ul li a:hover:before{
+    width:95%;
+}
+
+
+.wrapper{
+    margin-left:260px;
+}
+
+.section{
+    display:grid;
+    place-items:center;
+    min-height:100vh;
+    text-align:center;
+}
+
+.box-area h2{
+    text-transform:uppercase;
+    font-size:30px;  
+}
+
+table {
+    border-collapse: collapse;
+    width: 300%;
+    justify-content: center;
+    float: center;
+    
+  }
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  tr:hover {background-color:rgb(154, 173, 72);}
+  .content{
+    text-align:center;
+    background-color:rosybrown;
+    font-weight: bold;
+    font-size: x-large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  body{
+    margin:0;
+    padding:0;
+    font-family:'montserrat';
+    background:#e3e9f7;
+  }
+  
+  .logo{
+    padding:20px;
+  }
+  
+  
+  nav ul{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:260px;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#2b2626;
+  }
+  
+  nav ul li{
+    list-style:none;
+  }
+  
+  
+  nav ul li a{
+    display:block;
+    font-family:'montserrat';
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:17px;
+    color:#fff;
+    position:relative;
+    padding:15px 0px 15px 25px;
+    transition:all 0.5s;
+  }
+  
+  nav ul li a:before{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    background:#e3e9f7;
+    border-radius:40px 0 0 40px;
+    z-index:-1;
+    transition:all 1s;
+  }
+  
+  nav ul li a:hover{
+    color:#2b2626;
+  }
+  
+  nav ul li a:hover:before{
+    width:95%;
+  }
+  
+  
+  .wrapper{
+    margin-left:260px;
+  }
+  
+  .section{
+    display:grid;
+    place-items:center;
+    min-height:100vh;
+    text-align:center;
+  }
+  
+  .box-area h2{
+    text-transform:uppercase;
+    font-size:30px;
+  } 
+  
+  #customers {
+    align-items: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-right: auto;
+  margin-left: 20%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+     padding: 8px; 
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2d2db7;
+    color: white;
+  }

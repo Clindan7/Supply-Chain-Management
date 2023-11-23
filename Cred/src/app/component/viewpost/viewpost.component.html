@@ -1,0 +1,170 @@
+
+<app-header2></app-header2> 
+<br>
+<br>
+<br>
+<body>
+
+  <div class="search__container">
+ 
+  
+   <input type="input" id="search" name="search" class="search__input" placeholder="Search for products..." (input)="search($event)">
+  </div>
+   <div id="wrapper">
+    <h1>Table For Accepting And Rejecting</h1>
+    
+    <table id="keywords" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+ 
+         <th scope="col">postorderid</th>
+         <th scope="col">Supplier Name</th>
+         <th scope="col">Item Name</th>
+         <th scope="col">price</th>
+       
+         <th scope="col">Choice1</th>
+         <th scope="col">Choice2</th>
+         <th scope="col">Choice3</th>
+         <th scope="col">Choice4</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let sw of postorders; let i = index; ">
+         <td>{{sw.postOrderId}}</td>
+         <td>{{sw.preorder.supplier.supplierName}}</td>
+         <td>{{sw.preorder.item.itemName}}</td>
+        
+         <td>{{sw.price}}</td>
+        
+      
+ 
+ 
+ 
+ <td><button class="btn btn-success"  [disabled]="buttonDisabled" (click)="acceptRequest(sw.postOrderId)">Accept</button></td>
+ 
+ <td><button class="btn btn-danger"  (click)="rejectRequest(sw.postOrderId)">Reject</button></td> 
+ <td><button type="button" [disabled]="!buttonDisabled" (click)="openPopup(sw.postOrderId)"  class="btn btn-success">Request Order</button></td>
+ 
+ <td><button  mat-button  class="btn btn-secondary" (click)="status(sw.preorder.item.itemId)">Status</button> <br></td>
+ 
+ <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+
+
+   </tr>
+        
+      </tbody>
+      
+    </table>
+
+    </div>
+  
+  </body>
+
+
+
+
+  <br>
+  <br>
+  <br>
+  <div class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">REQUEST ORDER DETAILS</h4>
+      </div>
+    <div>
+      <div class="popup">
+        <form class="form-card" [formGroup]="form" (ngSubmit)="onsubmitOrder(form)">
+          <div class="row">
+            <div class="col-12">
+              <div>
+                 <label for="itemName" class="mid"> itemName:</label>
+                <input type="text" formControlName="itemName" class="form-control p-0" id="itemName" value=""  tabindex="1" >
+            </div>
+        
+            </div>
+         
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div>
+                <label for="quantity" class="mid">Quantity:</label>
+                
+                <input type="text" formControlName="quantity"class="form-control p-0" id="quantity" value=""  tabindex="2" >
+            </div>
+            
+            </div>
+            
+          </div>
+     
+          
+          <div class="row">
+            <div class="col-sm-4 col-12">
+              <div>
+                <label for="supplierName" class="mid">Supplier :</label>
+                <input type="text" formControlName="supplierName" class="form-control p-1"id="supplierName" value="" tabindex="6" >
+            </div>
+            </div>
+            <div class="col-sm-4 col-12">
+             
+              <div>
+                <label for="address" class="mid">Address:</label>
+                <input type="text" formControlName="address"  class="form-control p-1" id="address" value="" tabindex="5" >
+            </div>
+      
+            </div>
+            <div class="col-sm-4 col-12">
+              <div>
+                <label for="dDate" class="mid">Delivery Date:</label>
+                <input type="date" formControlName="dDate" id="dDate"class="form-control p-1" value=""  tabindex="2" >
+            </div>
+            </div>
+          </div>
+          <div class="row lrow mt-4 mb-3">
+            <div class="col-sm-8 col-12"><h3>Price:</h3></div>
+            <div>
+           
+              <input type="text" formControlName="price" id="price"class="form-control p-0" value=""  tabindex="2" >
+          </div>
+         
+          </div>
+          <div class="row mb-2">
+            <div class="col-sm-12">
+             
+              <button type="submit" class="btn btn-primary btn btn-default" value="submit">Send</button>
+              <!-- <button type="submit" class="btn btn-primary btn btn-default" value="submit">Cancel</button> -->
+             
+            </div>
+          </div>
+          
+        </form>
+          
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+  
+
+
+
+
+
+ 
+       
+<app-footer></app-footer>

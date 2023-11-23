@@ -1,0 +1,45 @@
+
+
+       
+
+          <div class="container my-5">
+            <div class="card-body text-center">
+         <h4 class="card-title">SENT REQUEST </h4>
+         <p class="card-text"></p>
+       </div>
+   
+  
+ 
+       <form [formGroup]="form" (ngSubmit)="onsubmit(form)">
+      
+
+        
+        <fieldset>
+ 
+         <div>
+             <label for="quantity" class="mid">Quantity:</label>
+             <input type="text" formControlName="quantity" id="quantity" value="" tabindex="1" >  
+            </div>
+   
+         <div>
+             <label for="address" class="mid">address:</label>
+             <input type="text" formControlName="address" id="address" value="" tabindex="2" >
+         </div>
+   
+         <div>
+             <label for="supplier" class="mid">Choose The Supplier::</label>
+             <select  class="dropbtn" type="input" formControlName="supplier" id="supplierId"  name="select" value="" tabindex="3" >
+                       <option  *ngFor="let supplier of supplierList" value="{{supplier.supplierId}}">
+                           {{supplier.supplierName}}        
+                     
+                       </option>
+                     </select>
+
+          
+   </div>
+   <br><br>
+   <input  type="submit" class="btn btn-primary"  value="Submit">  <br>
+     
+        </fieldset>
+      
+   </form> 

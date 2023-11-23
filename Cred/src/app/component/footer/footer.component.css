@@ -1,0 +1,44 @@
+/* .footer {
+    text-align: center;
+    padding: 3px;
+    background-color: black;
+    color: white;
+    bottom:0;
+    position: fixed;
+    left: 0;
+    width: 105%;
+    }
+  
+    .footer {
+      overflow: hidden;
+      background-color: black;
+      margin-left: -25px;
+      margin-right: 25px;
+      padding: 10px 10px 10px 10px;
+    }
+    .footer a {
+      float: right;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 10px; 
+      line-height: 8px;
+      border-radius: 4px;
+    }
+    .footer a.foot{
+      font-size: 25px;
+      font-weight: bold;
+      text-align: left;
+      color: whitesmoke;
+      padding: 12px 12px 12px 12px 12px;  
+      background-color: midnightblue;
+      background-position: -15px;
+  
+    }
+    .footer p{
+      text-align:center;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: x-large;
+      font-weight: bold;
+    }  */

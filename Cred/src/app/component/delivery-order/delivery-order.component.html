@@ -1,0 +1,159 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+  
+    <link rel="stylesheet" href="delivery-order.component.css">
+ 
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">SCM</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="delivery-order" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+
+        <!-- <li>
+          <a href="google-map" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">profile</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="change-deliverypassword">
+            <i class='bx bx-menu-alt-right' ></i>
+            <span class="links_name">Change Password</span>
+          </a>
+        </li>
+       
+        <li class="log_out">
+          <a href (click)="logout()">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input class="form-control searchbtn" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="Search....">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+     
+        <span class="admin_name"></span>
+        <!-- <i class='' >{{ema}}</i> -->
+        <!-- <a href="supplier-profile">
+          <i class=''>{{ema}}</i> -->
+
+          <span class="admin_name">{{ema}}</span>
+          <button mat-button (click)="show()" class='bx bx-chevron-down' href="delivery-profile"></button>
+        </div>
+      
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">DeliverOrder List</div>
+            <div class="number">{{data.length}}</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-add cart two' ></i>
+        </div>
+       
+      
+      </div>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">PrOrder List</div>
+          <div class="sales-details">
+            
+             
+  <tr>
+                       <th scope="col">Id</th>
+                       <th scope="col">Item</th>
+                       <th scope="col">Price</th>
+                       <th scope="col">Address</th>
+                       <th scope="col">Quantity</th>
+                       <th scope="col">Date</th>
+                  
+                       <th scope="col">Choice1</th>
+                       <th scope="col">Choice2</th>
+                       <th scope="col">Select</th>
+             
+                     </tr>
+                 
+                      <tr *ngFor="let postorder of data  |filter:searchText ">
+   
+                      <td>{{postorder.preorder.preOrderId}}</td>
+                         <td>{{postorder.preorder.item.itemName}}</td>
+                         <td>{{postorder.price}}</td>
+                         <td>{{postorder.preorder.address}}</td>
+                         <td>{{postorder.preorder.quantity}}</td>
+                         <td>{{postorder.preorder.dDate|date:'dd-MM-yyyy'}}</td>
+                  <td><button class="btn btn-success" [disabled]="buttonDisabled" 
+                      (click)="view(postorder.postOrderId)">SHIPPED </button></td>
+                  <td><button class="btn btn-danger" 
+                     [disabled]="!buttonDisabled" (click)="viewNo(postorder.postOrderId)">DELIVERED</button></td>
+                  
+                     <td><input type="checkbox" (change)="getValues($event,postorder.postOrderId)" /></td>     
+                    
+
+
+                             </tr> 
+                             <br>
+
+                             <div>   <button class="btn btn-secondary" 
+                                 (click)="bulk(data.postOrderId)">Bulk update</button></div>   
+                                
+                                 
+
+          </div>
+      
+
+        
+        </div>
+       
+      </div>
+    </div>
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+</html> 
